@@ -67,7 +67,7 @@ end
 ```
 Replace all placeholders with your actual values.
 
-2. **Troubleshooting**
+3. **Troubleshooting**
 
 If you encounter issues with the vSphere provider settings, double-check your vSphere server credentials, permissions, and network configurations.
 
