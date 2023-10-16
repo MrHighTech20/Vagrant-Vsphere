@@ -1,10 +1,10 @@
 # Vagrant-Vsphere
 Using vagrant to create VMs on Vsphere server 
 
-Hey everyone. I created a Vagrantfile to use with a vSphere (vCenter server). I had some problems to solve and I need to improve the code. First let's understand what we are doing in this case
+Hey everyone. I created a Vagrantfile to use with a vSphere (vCenter server). I had some problems to solve and I need to improve the code. First let's understand what we are doing in this case.
 
 # Vagrant
-This guide explains how to set up a virtual machine (VM) using Vagrant with the VMware vSphere provider. Before I had to create the VM manually and saved it as a template in vCenter and the code creates a VM, based on that template and we will assign a fixed IP address and customize the SSH key for authentication.
+This guide explains how to set up a virtual machine (VM) using Vagrant with the VMware vSphere provider. Initially, I had to create the VM manually and save it as a template in vCenter, so the code created a VM based on that template. Now we will assign a static IP address and customize the SSH key for authentication.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ Before you begin, ensure you have the following:
 - [Vagrant](https://www.vagrantup.com/) installed
 - Access to a VMware vCenter Server
 - A Vagrant box for your desired OS
-- Install vSphere plugin
+- vSphere plugin installed
 ```bash
   vagrant plugin install vagrant-vsphere
 ```
@@ -38,7 +38,7 @@ A Vagrant box for your desired OS
 
 # Configure network settings for a static IP in bridge mode
   config.vm.network 'public_network', bridge: 'VM Network'
-  config.vm.network 'private_network', ip: '192.168.**.**' # Replace with your desired fixed IP
+  config.vm.network 'private_network', ip: '192.168.**.**' # Replace with your desired static IP
 
 # Configure the vSphere provider settings
   config.vm.provider :vsphere do |vsphere|
@@ -72,10 +72,10 @@ Replace all placeholders with your actual values.
 If you encounter issues with the vSphere provider settings, double-check your vSphere server credentials, permissions, and network configurations.
 
 For more details on Vagrant and the vSphere provider, refer to the official documentation.
-At the moment the VM is created using a template the would created before, after creating the virtual machine, Vagrant tried to create a connection using SSH but return one mensage saying:
+At the moment, the VM is created using a template that was created before. After creating the virtual machine, Vagrant tried to create a connection using SSH, but the following message returns:
 
 ```bash
 default: SSH auth method: private key 
 default: Warning: Authentication failure. Retrying...
 ```
-The virtual machine is running but the not finished to config because the SSH not working.
+The virtual machine is running but with unfinished config, because the SSH is not working.
